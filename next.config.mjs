@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // output: 'export',  // Comenta o elimina esta línea
+
   async headers() {
     return [
       {
-        source: '/(.*)',  // Aplica a todas las rutas
+        source: '/(.*)',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',  // Permitir todos los dominios (ajústalo si es necesario)
+            value: '*',
           },
           {
             key: 'Access-Control-Allow-Methods',
@@ -20,7 +22,7 @@ const nextConfig = {
           },
         ],
       },
-    ]
+    ];
   },
 };
 
