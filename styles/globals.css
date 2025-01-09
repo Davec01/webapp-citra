@@ -2,20 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Colores globales */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Fondo claro */
+  --foreground: #171717; /* Texto oscuro */
+  --header-color: #171717; /* Color predeterminado de encabezados */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0a; /* Fondo oscuro */
+    --foreground: #ededed; /* Texto claro */
+    --header-color: #ffffff; /* Color de encabezados en modo oscuro */
   }
 }
 
+/* Estilo global del body */
 body {
+  color: var(--foreground); /* Texto general */
+  background: var(--background); /* Fondo general */
+  font-family: Arial, Helvetica, sans-serif; /* Fuente */
+}
+
+/* Encabezados globales */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-color); /* Usa el color de encabezado global */
+  font-weight: bold; /* Destaca los encabezados */
+  margin: 0.5em 0; /* Espaciado estándar */
+}
+
+/* Evita estilos heredados en el contenido */
+p {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }

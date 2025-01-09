@@ -23,25 +23,32 @@ export function SearchCommand() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="max-w-2xl w-full mx-auto space-y-6 p-6">
+      <div className="max-w-2xl w-full mx-auto p-8 space-y-8">
+        {/* Logo */}
         <div className="flex justify-center">
           <Image src="/Logo.png" alt="Logo de la empresa" width={150} height={150} />
         </div>
-        <h1 className="text-5xl font-extrabold text-center text-gray-800">
+
+        {/* Encabezado */}
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900">
           ¿Qué quieres saber?
         </h1>
 
+        {/* Card con Input y botones */}
         <Card className="p-6 rounded-2xl shadow-xl bg-white border border-gray-200">
           <div className="flex flex-col gap-6">
+            {/* Input */}
             <Input
               placeholder="Pregunta lo que sea..."
-              className="border-2 border-gray-300 focus:ring-2 focus:ring-blue-500 text-lg h-16 rounded-lg shadow-sm p-3"
+              className="border-2 border-gray-300 focus:ring-2 focus:ring-blue-500 text-lg h-14 rounded-lg shadow-sm p-4 text-gray-900"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") handleSubmit();
               }}
             />
+
+            {/* Selector y Botón */}
             <div className="flex justify-between items-center">
               <select
                 value={option}
