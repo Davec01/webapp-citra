@@ -1,12 +1,12 @@
 export default async function handler(req, res) {
-  // Verifica que el método sea POST
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Método no permitido" });
   }
 
   const { query } = req.body;
 
-  // Validación: la pregunta es obligatoria
+  
   if (!query) {
     return res.status(400).json({ message: "La pregunta es obligatoria." });
   }
@@ -14,7 +14,6 @@ export default async function handler(req, res) {
   try {
     console.log("Consulta recibida en API:", query);
 
-    // Realiza la solicitud a la API externa
     const response = await fetch("http://35.223.72.198:8081/ask", {
       method: "POST",
       headers: {
@@ -39,7 +38,7 @@ export default async function handler(req, res) {
     for (const line of lines) {
       try {
         if (line.trim()) {
-          const parsed = JSON.parse(line);  // Parsear cada fragmento JSON
+          const parsed = JSON.parse(line); 
           finalAnswer += parsed.result.chunk || "";
         }
       } catch (error) {
@@ -47,7 +46,6 @@ export default async function handler(req, res) {
       }
     }
 
-    // Devolver la respuesta final al cliente
     return res.status(200).json({ answer: finalAnswer || "No se obtuvo respuesta." });
 
   } catch (error) {
