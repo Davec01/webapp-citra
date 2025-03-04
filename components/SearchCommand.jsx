@@ -55,8 +55,7 @@ export function SearchCommand() {
                 onChange={(e) => setOption(e.target.value)}
                 className="h-12 px-4 rounded-lg bg-black text-white text-lg cursor-pointer"
               >
-                <option value="Docs"> ✦ Docs</option>
-                <option value="Big Data"> ✦ Big Data</option>
+                <option value="Docs"> ✦ Clectif AI</option>
               </select>
               <Button
                 className="h-12 px-8 rounded-lg bg-black hover:bg-gray-800 text-white transition-all"

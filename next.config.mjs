@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  trailingSlash: true,
-  env: {
-    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000',
-  },
+  trailingSlash: true, // Mantener si es necesario
   images: {
-    unoptimized: true, // Desactiva la optimización de imágenes
+    unoptimized: true, // Desactiva optimización de imágenes
   },
 };
 
