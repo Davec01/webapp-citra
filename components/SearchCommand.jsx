@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 export function SearchCommand() {
@@ -12,17 +12,11 @@ export function SearchCommand() {
   const [option, setOption] = useState("Docs");
   const router = useRouter();
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://telegram.org/js/telegram-web-app.js";
-    script.async = true;
-    script.onload = () => {
-      if (window.Telegram?.WebApp?.HomeScreenButton) {
-        window.Telegram.WebApp.HomeScreenButton.show();
-      }
-    };
-    document.head.appendChild(script);
-  }, []);
+  const handleAddToHomeScreen = () => {
+    if (window.Telegram?.WebApp?.addToHomeScreen) {
+      window.Telegram.WebApp.addToHomeScreen();
+    }
+  };
 
   const handleSubmit = () => {
     if (question.trim()) {
@@ -78,6 +72,14 @@ export function SearchCommand() {
             </div>
           </div>
         </Card>
+
+        {/* Botón para agregar a inicio */}
+        <button
+          onClick={handleAddToHomeScreen}
+          className="w-full mt-2 h-12 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm hover:bg-gray-50 transition-all"
+        >
+          Agregar a pantalla de inicio
+        </button>
       </div>
     </div>
   );
