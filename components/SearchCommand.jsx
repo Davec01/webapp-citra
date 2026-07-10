@@ -4,13 +4,19 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export function SearchCommand() {
   const [question, setQuestion] = useState("");
   const [option, setOption] = useState("Docs");
   const router = useRouter();
+
+  useEffect(() => {
+    if (window.Telegram?.WebApp?.HomeScreenButton) {
+      window.Telegram.WebApp.HomeScreenButton.show();
+    }
+  }, []);
 
   const handleSubmit = () => {
     if (question.trim()) {
