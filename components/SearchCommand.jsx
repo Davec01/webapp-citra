@@ -13,8 +13,15 @@ export function SearchCommand() {
   const router = useRouter();
 
   const handleAddToHomeScreen = () => {
-    if (window.Telegram?.WebApp?.addToHomeScreen) {
-      window.Telegram.WebApp.addToHomeScreen();
+    const tg = window.Telegram?.WebApp;
+    if (!tg) {
+      alert("Telegram WebApp no disponible");
+      return;
+    }
+    if (tg.addToHomeScreen) {
+      tg.addToHomeScreen();
+    } else {
+      alert("Versión: " + tg.version + " | Métodos: " + Object.keys(tg).filter(k => typeof tg[k] === "function").join(", "));
     }
   };
 
