@@ -13,9 +13,15 @@ export function SearchCommand() {
   const router = useRouter();
 
   useEffect(() => {
-    if (window.Telegram?.WebApp?.HomeScreenButton) {
-      window.Telegram.WebApp.HomeScreenButton.show();
-    }
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-web-app.js";
+    script.async = true;
+    script.onload = () => {
+      if (window.Telegram?.WebApp?.HomeScreenButton) {
+        window.Telegram.WebApp.HomeScreenButton.show();
+      }
+    };
+    document.head.appendChild(script);
   }, []);
 
   const handleSubmit = () => {
